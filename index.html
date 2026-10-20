@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gravity Price Calculator</title><link rel="stylesheet" href="style.css"></head><body>
+<h1>Gravity Price</h1><p><code>price = k × weight × g × d</code>, g = 9.8 m/s²</p>
+<label>Mode <select id="mode"><option value="software">Software (weight = kB)</option><option value="physical">Physical (weight = kg)</option></select></label>
+<fieldset id="sw"><legend>Software</legend>
+<label>npm package <input id="pkg" placeholder="fakegreen"> <select id="which"><option value="tarball">tarball size</option><option value="unpacked">unpacked size</option></select> <button id="fetch" type="button">Fetch size</button></label>
+<small id="status"></small></fieldset>
+<label>Weight (<span id="unit">kB</span>) <input id="weight" type="number" step="any" min="0" value="11.7"></label>
+<label>k ($ per unit) <input id="k" type="number" step="any" min="0" value="0.10"></label>
+<label>d (demand multiplier) <input id="d" type="number" step="any" min="0" value="1"></label>
+<fieldset id="ph" class="hidden"><legend>Height / distance term (1 + h/h0)</legend>
+<label>h (m) <input id="h" type="number" step="any" min="0" value="0"></label>
+<label>h0 (m) <input id="h0" type="number" step="any" min="0" value="1000"></label></fieldset>
+<p>Price per buyer: <span id="out">–</span></p>
+<p><small>Default values are example data. <a href="https://github.com/fitzyracing1/gravity-price">Source</a></small></p>
+<script type="module">
+import { gravityPrice, npmSizeKB } from "./gravity.js";
+const $ = id => document.getElementById(id);
+function calc(){const phys=$("mode").value==="physical";
+ try{$("out").textContent="$"+gravityPrice({weight:+$("weight").value,k:+$("k").value,d:+$("d").value,h:phys?+$("h").value:0,h0:phys?+$("h0").value:1000}).toFixed(2)}catch(e){$("out").textContent=e.message}}
+$("mode").onchange=()=>{const p=$("mode").value==="physical";$("sw").classList.toggle("hidden",p);$("ph").classList.toggle("hidden",!p);$("unit").textContent=p?"kg":"kB";calc()};
+document.querySelectorAll("input").forEach(i=>i.oninput=calc);
+$("fetch").onclick=async()=>{$("status").textContent="Fetching…";try{const kb=await npmSizeKB($("pkg").value.trim(),$("which").value);$("weight").value=kb.toFixed(2);$("status").textContent=`Measured from npm registry: ${kb.toFixed(2)} kB`;calc()}catch(e){$("status").textContent=e.message}};
+calc();
+</script></body></html>
