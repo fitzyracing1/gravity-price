@@ -1,0 +1,7 @@
+description = "Gravity price for a weight: /price <weight> [k=0.10] [d=1] [h=0] [h0=1000]"
+prompt = """
+Compute a gravity price with the `price` tool from the gravity-price MCP server.
+Formula: value = k * weight * 9.8 * d * (1 + h/h0). Defaults: k=0.10, d=1, h=0, h0=1000.
+Parse these arguments (first bare number is weight; key=value pairs override defaults): {{args}}
+If no weight is given, ask for one. Reply with the inputs used and the resulting value.
+"""

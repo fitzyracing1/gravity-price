@@ -1,0 +1,7 @@
+description = "Fetch an npm package's size (kB) from the registry and gravity-price it: /price-npm <package> [k=] [d=] [unpacked]"
+prompt = """
+Use the `price_npm` tool from the gravity-price MCP server to look up the latest version of the npm package
+and price it with value = k * weight_kB * 9.8 * d (defaults k=0.10, d=1; size = tarball kB unless "unpacked" is given).
+Arguments: {{args}}
+Reply with the package, the size in kB, the parameters, and the value.
+"""

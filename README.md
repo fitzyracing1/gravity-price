@@ -24,3 +24,15 @@ Live: https://fitzyracing1.github.io/gravity-price/ — or open `index.html` via
 Tests: `npm test` (Node 18+, no dependencies). CI shows lit when tests pass, dark when they fail.
 
 MIT © 2026 Joshua Almeida
+
+## Gemini CLI extension
+
+```sh
+gemini extensions install https://github.com/fitzyracing1/gravity-price
+```
+
+Adds:
+- `/price <weight> [k=0.10] [d=1] [h=0] [h0=1000]` — manual calculation
+- `/price-npm <package> [k=] [d=] [unpacked]` — fetch the npm package size (kB) from the registry and price it
+- A zero-dependency stdio MCP server (`mcp-server.mjs`) with `price` and `price_npm` tools, reusing `gravity.js`
+- `GEMINI.md` context explaining the formula
