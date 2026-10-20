@@ -1,1 +1,1 @@
-{"name":"gravity-price","version":"0.1.0","private":true,"type":"module","scripts":{"test":"node test.mjs"},"license":"MIT"}
+{"name":"gravity-price","version":"0.1.0","private":true,"type":"module","scripts":{"test":"node test.mjs && node test-ext.mjs"},"license":"MIT"}

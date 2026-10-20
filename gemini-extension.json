@@ -1,0 +1,13 @@
+{
+  "name": "gravity-price",
+  "version": "0.1.0",
+  "description": "Price things by gravity: value = k * weight * 9.8 * d. Works for npm packages (size in kB) and physical objects (kg, optional height).",
+  "mcpServers": {
+    "gravity-price": {
+      "command": "node",
+      "args": ["${extensionPath}${/}mcp-server.mjs"],
+      "cwd": "${extensionPath}"
+    }
+  },
+  "contextFileName": "GEMINI.md"
+}
