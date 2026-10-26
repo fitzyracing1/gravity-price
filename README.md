@@ -36,3 +36,11 @@ Adds:
 - `/price-npm <package> [k=] [d=] [unpacked]` — fetch the npm package size (kB) from the registry and price it
 - A zero-dependency stdio MCP server (`mcp-server.mjs`) with `price` and `price_npm` tools, reusing `gravity.js`
 - `GEMINI.md` context explaining the formula
+
+## Plans
+
+This project is free, and its license stays as is. Support it through [GitHub Sponsors](https://github.com/sponsors/fitzyracing1):
+
+- **Free**: use the code, community support.
+- **Pro ($49/month)**: priority issues and support.
+- **Team ($199/month)**: priority support for your team plus early access.
